@@ -1,0 +1,26 @@
+{
+  "name": "consulate-pbkdf2",
+  "version": "0.1.0",
+  "description": "pbkdf2 password hashing plugin for consulate",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/consulate/consulate-pbkdf2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/consulate/consulate-pbkdf2/issues"
+  },
+  "keywords": [
+    "pbkdf2"
+  ],
+  "author": "Cameron Bytheway <cameron@theflokk.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "should": "~1.2.2",
+    "mocha": "~1.11.0"
+  }
+}
