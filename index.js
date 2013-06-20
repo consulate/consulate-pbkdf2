@@ -14,7 +14,7 @@ module.exports = function(options) {
     app.verifyPassword(function(user, password, done) {
       var salt = user.salt || options.salt;
 
-      if (!options.salt) return done(Error('Missing a `salt` for consulate-pbkdf2'));
+      if (!salt) return done(Error('Missing a `salt` for consulate-pbkdf2'));
 
       pbkdf2(password, salt, iterations, keylen, function(err, hash) {
         if (err) return done(err);
