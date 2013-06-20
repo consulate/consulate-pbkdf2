@@ -1,12 +1,22 @@
 /**
  * Module dependencies
  */
-var pbkdf2 = require("crypto").pbkdf2;
+var pbkdf2 = require('crypto').pbkdf2;
 
 module.exports = function(options) {
+
+  options = options || {};
+
+  var iterations = options.iterations || 64000
+    , keylen = options.keylen || 64;
+
   return function(app) {
     app.verifyPassword(function(user, password, done) {
-      pbkdf2(password, options.salt, options.iterations, options.keylen, function(err, hash) {
+      var salt = user.salt || options.salt;
+
+      if (!options.salt) return done(Error('Missing a `salt` for consulate-pbkdf2'));
+
+      pbkdf2(password, salt, iterations, keylen, function(err, hash) {
         if (err) return done(err);
 
         var passhash = new Buffer(user.passhash, 'hex');
